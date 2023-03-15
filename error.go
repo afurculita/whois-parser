@@ -43,12 +43,12 @@ var (
 // getDomainErrorType returns error type of domain data
 func getDomainErrorType(data string) error {
 	switch {
+	case isPremiumDomain(data):
+		return ErrPremiumDomain
 	case isNotFoundDomain(data):
 		return ErrNotFoundDomain
 	case isBlockedDomain(data):
 		return ErrBlockedDomain
-	case isPremiumDomain(data):
-		return ErrPremiumDomain
 	case isReservedDomain(data):
 		return ErrReservedDomain
 	case isLimitExceeded(data):
